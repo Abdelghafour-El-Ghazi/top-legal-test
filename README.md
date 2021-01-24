@@ -38,9 +38,9 @@ The page will reload if you make edits.
 ## Things that can be improved
 
 I will add the option of choosing the owner and the repository
-and not only work with facebook/react
+and not only work with facebook/react. \
 The `Github GraphQl API` doesn't have the data of the changed Files,
-which is really needed.
+which is really needed. \
 Using the cursor to search in the GraphQl API can be improved, making the cursor optionnal,
 use it if it is given, and fetch the first list if not.
 Which can help with duplicate queries.
