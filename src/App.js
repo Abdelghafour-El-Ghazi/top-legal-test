@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "antd/dist/antd.css";
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import AppBar from "./components/AppBar";
+import Commit from "./pages/Commit";
 
-function App() {
+const App = () => {
+  const [cursor, setCursor] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalpage, setTotalPage] = useState(10);
+  // we need to keep track of
+  // the cursor
+  // the currentPage
+  // the totalpage
+  // when switching between the commit and home page
+  // as they are part of  the skip condition in the queries
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppBar />
+      <Route
+        exact
+        path='/'
+        render={() => (
+          <Home
+            cursor={cursor}
+            setCursor={setCursor}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalpage={totalpage}
+            setTotalPage={setTotalPage}
+          />
+        )}
+      />
+      <Route exact path='/commit/:id' component={Commit} />
+    </Router>
   );
-}
+};
 
 export default App;
